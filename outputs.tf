@@ -20,7 +20,7 @@ output "lightsail_distributions_cache_behavior" {
 }
 output "lightsail_distributions_cache_behavior_settings" {
   description = "Map of cache_behavior_settings values across all lightsail_distributions, keyed the same as var.lightsail_distributions"
-  value       = { for k, v in aws_lightsail_distribution.lightsail_distributions : k => v.cache_behavior_settings if v.cache_behavior_settings != null && length(v.cache_behavior_settings) > 0 }
+  value       = { for k, v in aws_lightsail_distribution.lightsail_distributions : k => one(v.cache_behavior_settings) if v.cache_behavior_settings != null && length(v.cache_behavior_settings) > 0 }
 }
 output "lightsail_distributions_certificate_name" {
   description = "Map of certificate_name values across all lightsail_distributions, keyed the same as var.lightsail_distributions"
@@ -32,7 +32,7 @@ output "lightsail_distributions_created_at" {
 }
 output "lightsail_distributions_default_cache_behavior" {
   description = "Map of default_cache_behavior values across all lightsail_distributions, keyed the same as var.lightsail_distributions"
-  value       = { for k, v in aws_lightsail_distribution.lightsail_distributions : k => v.default_cache_behavior if v.default_cache_behavior != null && length(v.default_cache_behavior) > 0 }
+  value       = { for k, v in aws_lightsail_distribution.lightsail_distributions : k => one(v.default_cache_behavior) if v.default_cache_behavior != null && length(v.default_cache_behavior) > 0 }
 }
 output "lightsail_distributions_domain_name" {
   description = "Map of domain_name values across all lightsail_distributions, keyed the same as var.lightsail_distributions"
@@ -56,7 +56,7 @@ output "lightsail_distributions_name" {
 }
 output "lightsail_distributions_origin" {
   description = "Map of origin values across all lightsail_distributions, keyed the same as var.lightsail_distributions"
-  value       = { for k, v in aws_lightsail_distribution.lightsail_distributions : k => v.origin if v.origin != null && length(v.origin) > 0 }
+  value       = { for k, v in aws_lightsail_distribution.lightsail_distributions : k => one(v.origin) if v.origin != null && length(v.origin) > 0 }
 }
 output "lightsail_distributions_origin_public_dns" {
   description = "Map of origin_public_dns values across all lightsail_distributions, keyed the same as var.lightsail_distributions"
